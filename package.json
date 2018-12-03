@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "start": "backpack --inspect=7000",
+    "build": "backpack build",
+    "test": "jest",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "start:prod": "node build/server.js",
+    "coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@babel/core": "^7.1.0",
+    "babel-preset-env": "^1.7.0",
+    "backpack-core": "^0.8.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "log4js": "^3.0.6"
+  },
+  "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "jest-cli": "^23.6.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "globals": {
+      "__DEV__": true
+    }
+  }
+}
