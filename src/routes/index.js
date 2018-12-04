@@ -1,5 +1,5 @@
 import express from 'express';
-import Services from 'src/services';
+import Services from 'src/domain/services';
 
 var router = express.Router();
 

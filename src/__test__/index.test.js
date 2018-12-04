@@ -1,6 +1,6 @@
-import Services from 'src/services';
+import Services from 'src/domain/services';
 
-jest.mock('src/infrastructure', () => {
+jest.mock('src/apis', () => {
   return jest.fn().mockImplementation(() => {
     return { get: () => 'test' };
   });
@@ -9,8 +9,8 @@ jest.mock('src/infrastructure', () => {
 describe('Test', () => {
   it('Is OK', () => {
   	// Arrange
-  	const msgInfra = 'test';
-    const msg = `services ${msgInfra}`;
+  	const msgApi = 'test';
+    const msg = `service ${msgApi}`;
 
     // Act
     let services = new Services().get();
