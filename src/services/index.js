@@ -1,3 +1,14 @@
-import infrastructure from '../infrastructure';
+import Infrastructure from 'src/infrastructure';
 
-export default () => `services ${infrastructure}`;
+class Services {
+	constructor(){
+		this.infrastructure = new Infrastructure();
+	}
+
+	get() {
+		let result = this.infrastructure.get();
+		return `services ${result}`;		
+	}
+}
+
+export default Services;

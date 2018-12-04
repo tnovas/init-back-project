@@ -3,8 +3,11 @@ import bodyParser from 'body-parser';
 import http from 'http';
 import log4js from 'log4js';
 
-import settings from './settings';
-import routes from './routes';
+import routes from 'src/routes';
+
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 var app = express();
 var server = http.Server(app);
@@ -28,4 +31,4 @@ log4js.configure({
   categories: { default: { appenders: ['error'], level: 'error' } }
 });
 
-server.listen(settings.port);
+server.listen(process.env.PORT);

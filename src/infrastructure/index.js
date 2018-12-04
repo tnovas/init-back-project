@@ -1,1 +1,8 @@
-export default () => 'infrastructure';
+
+class Infrastructure {
+	get() {
+		return 'infrastructure';
+	}
+}
+
+export default Infrastructure;

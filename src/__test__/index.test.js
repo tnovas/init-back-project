@@ -1,9 +1,21 @@
-import services from '../services';
+import Services from 'src/services';
+
+jest.mock('src/infrastructure', () => {
+  return jest.fn().mockImplementation(() => {
+    return { get: () => 'test' };
+  });
+});
 
 describe('Test', () => {
   it('Is OK', () => {
-    const msg = { say: 'hello world' };
+  	// Arrange
+  	const msgInfra = 'test';
+    const msg = `services ${msgInfra}`;
 
-    expect(msg).toEqual({ say: 'hello world' })
+    // Act
+    let services = new Services().get();
+
+    // Assert
+    expect(services).toEqual(msg);
   });
 })

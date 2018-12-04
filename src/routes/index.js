@@ -1,10 +1,12 @@
 import express from 'express';
-import services from '../services';
+import Services from 'src/services';
 
 var router = express.Router();
 
 router.get('*', (req, res) => {
-	res.json(`routes ${services}`);	
+	let services = new Services();
+	
+	res.json(`routes ${services.get()}`);	
 });
 
 export default router;
