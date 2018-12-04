@@ -2,22 +2,20 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 
 module.exports = {
-  modify(config, { dev }, webpack) {
-    const appConfig = config;
-    var env;
-    console.log(dev);
-    if (dev) {
-    	env = dotenv.config().parsed;
-    } else {
-  		env = dotenv.parse(fs.readFileSync('.env.production'));
-    }
+  webpack: (config, {dev}, webpack) => {
+      var env;
 
-    appConfig.plugins.push(
-      new webpack.DefinePlugin({ 
-        'process.env.PORT': JSON.stringify(env.PORT),
-      })
-  );
+      if (dev) {
+        env = dotenv.config().parsed;
+      } else {
+        env = dotenv.parse(fs.readFileSync('.env.production'));
+      }
 
-	return appConfig;
+      config.plugins.push(
+        new webpack.DefinePlugin({ 
+          'process.env.PORT': JSON.stringify(env.PORT),
+        })
+    );
+    return config;
   },
 };
